@@ -1,0 +1,23 @@
+{
+  "name": "hl7-bridge",
+  "version": "1.0.0",
+  "description": "HL7 Bridge",
+  "main": "server.js",
+  "author": "Igor Campus",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "dotenv": "^6.2.0",
+    "express": "~4.7.2",
+    "express-handlebars": "^3.0.2",
+    "mkdir-recursive": "^0.4.0",
+    "node-port-check": "^2.0.1",
+    "node-uid": "^0.1.3",
+    "slugify": "^1.3.4",
+    "socket.io": "^2.2.0",
+    "sqlite3": "^4.0.6",
+    "moment": "2.24.0",
+    "utils-merge": "1.0.0",
+    "watch": "0.16.0"
+  }
+}

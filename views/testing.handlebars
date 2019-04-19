@@ -1,0 +1,56 @@
+<form action="#">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>{{postValue.senderName}} - {{postValue.senderIpAddress}}:{{postValue.senderPort}}</h3>
+            <div class="form-group">
+                <label for="sender-message">HL7 Message:</label>
+                <textarea id="sender-message" class="form-control" rows="6"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="sender-ack">ACK:</label>
+                <textarea id="sender-ack" class="form-control clear-textarea" rows="3" readonly></textarea>
+            </div>
+            <input class="btn btn-primary float-right" id="submit-button" type="submit" value="Send Message"
+                title="Send Message">
+        </div>
+        <div class="col-md-6">
+            {{#each receivers}}
+            <h3>{{this.getName}} - localhost:{{this.getPort}}</h3>
+            <div class="form-group">
+                <label for="sender-message">HL7 Message:</label>
+                <textarea id="receiver-{{this.getPort}}" class="form-control clear-textarea" rows="3"
+                    readonly></textarea>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</form>
+
+<script src="/static/js/socket.io.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var socket = io.connect('http://127.0.0.1:3001');
+
+    socket.on('sender-ack', function (data) {
+        $("#sender-ack").val(data.message);
+    })
+
+    socket.on('receiver', function (data) {
+        $("#receiver-" + data.port).val(data.message);
+    })
+
+    $("#submit-button").click(function () {
+        $(".clear-textarea").val("");
+        let message = $("#sender-message").val();
+        $.post("/send-message", { hl7Message: message }, function (response) {
+        });
+
+        return false;
+    });
+
+
+
+
+
+
+</script>
