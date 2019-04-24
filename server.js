@@ -69,9 +69,9 @@ app.post("/send-message", function (req, res) {
 
 
 app.listen(3000, function () {
-    log.info('Server up: http://localhost:3000');
+    log.info('Server up: port 3000');
 });
 
 socketServer.listen(3001, function () {
-    log.info('Server socket up: 3001 port');
+    log.info('Socket up: port 3001');
 });

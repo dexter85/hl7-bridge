@@ -29,7 +29,8 @@
 
 <script src="/static/js/socket.io.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var socket = io.connect(window.location.origin + ':3001');
+    let socketUrl = window.location.origin.replace("3000", "3001");
+    var socket = io.connect(socketUrl);
 
     socket.on('sender-ack', function (data) {
         $("#sender-ack").val(data.message);
