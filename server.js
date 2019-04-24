@@ -58,7 +58,6 @@ app.post("/testing", function (req, res) {
     }
 
     mTester = new Tester(reqBody.testName, reqBody.senderIpAddress, reqBody.senderPort, receivers, __dirname + "/data/", io);
-
     res.render("testing", { postValue: reqBody, receivers: receivers });
 });
 

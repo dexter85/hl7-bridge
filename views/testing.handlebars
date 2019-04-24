@@ -1,4 +1,4 @@
-<form action="#">
+<form action="#" autocomplete="off">
     <div class="row">
         <div class="col-md-6">
             <h3>{{postValue.senderName}} - {{postValue.senderIpAddress}}:{{postValue.senderPort}}</h3>
@@ -29,7 +29,7 @@
 
 <script src="/static/js/socket.io.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var socket = io.connect('http://127.0.0.1:3001');
+    var socket = io.connect(window.location.origin + ':3001');
 
     socket.on('sender-ack', function (data) {
         $("#sender-ack").val(data.message);
